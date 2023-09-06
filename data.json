@@ -1,0 +1,31 @@
+{
+  "sessions": [
+    {
+      "start": "23:30",
+      "end": "03:00",
+      "win": 0,
+      "loss": 0,
+      "max_win": 6,
+      "max_loss": 2,
+      "ops": []
+    },
+    {
+      "start": "07:30",
+      "end": "12:00",
+      "win": 0,
+      "loss": 0,
+      "max_win": 6,
+      "max_loss": 2,
+      "ops": []
+    },
+    {
+      "start": "19:24",
+      "end": "20:00",
+      "win": 0,
+      "loss": 0,
+      "max_win": 2,
+      "max_loss": 2,
+      "ops": []
+    }
+  ]
+}

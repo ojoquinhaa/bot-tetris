@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' /home/ojoquinhaa/Documentos/api-binary-operations/quotex-sinais-61755694bf4cd0dd219977d6123332fdce38ebbd/quotex-sinais-61755694bf4cd0dd219977d6123332fdce38ebbd/venv/bin/python3 "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from playwright.__main__ import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
