@@ -68,8 +68,7 @@ class SignalsSender:
         if not check:
             print("Não foi possivel conectar com a API." + resson)
             return
-        
-        time.sleep(1800)
+
         
         enc=chardet.detect(open('data.json','rb').read())['encoding']
         with open('data.json', 'r+', encoding= enc) as f:
@@ -166,7 +165,7 @@ class SignalsSender:
             # WIN DIRETO
             else:
                 print(f"[{signal}] : OPERAÇÃO FINALIZADA, WIN DIRETO")
-                send_message_to_channel(f"WIN DIRETO")
+                send_message_to_channel(f"WIN DIRETO ✅")
                 self.__sessions[session]['win'] += 1
                 self.__sessions[session]['ops'].append(f'{signal} WIN')
                 save(self.__sessions)
@@ -183,7 +182,7 @@ class SignalsSender:
             # WIN GALE 1
             else:
                 print(f"[{signal}] : OPERAÇÃO FINALIZADA, WIN NO GALE 1")
-                send_message_to_channel(f"WIN GALE 1")
+                send_message_to_channel(f"WIN GALE")
                 self.__sessions[session]['win'] += 1
                 self.__sessions[session]['ops'].append(f'{signal} WIN')
                 save(self.__sessions)
@@ -194,7 +193,7 @@ class SignalsSender:
 
             if result == "LOSS":
                 print(f"[{signal}] : OPERAÇÃO FINALIZADA, LOSS")
-                send_message_to_channel(f"LOSS")
+                send_message_to_channel(f"❌LOSS")
                 self.__sessions[session]['loss'] += 1
                 self.__sessions[session]['ops'].append(f'{signal} LOSS')
                 save(self.__sessions)
@@ -206,7 +205,7 @@ class SignalsSender:
             # WIN GALE 2
             else:
                 print(f"[{signal}] : OPERAÇÃO FINALIZADA, WIN NO GALE 2")
-                send_message_to_channel(f"WIN GALE 2")
+                send_message_to_channel(f"WIN GALE")
                 self.__sessions[session]['win'] += 1
                 self.__sessions[session]['ops'].append(f'{signal} WIN')
                 save(self.__sessions)
@@ -230,17 +229,18 @@ class SignalsSender:
     def finish_op(self, session):
         if self.__sessions[session]['win'] > self.__sessions[session]['max_win']:
             self.end(session)
-            send_message_to_channel("Sessão encerrada, stop win")
+            # send_message_to_channel("Sessão encerrada, stop win")
         
         if self.__sessions[session]['loss'] > self.__sessions[session]['max_loss']:
             self.end(session)
-            send_message_to_channel("Sessão encerrada, stop loss")
+            send_message_to_channel("❌ pessoal. Seguimos em análises")
 
         # PRÉVIA DO RESULTADO
         if self.__sessions[session]['win'] >= 4:
             preview = "\n".join(self.__sessions[session]['ops'])
+            preview.replace('WIN', '✅')
+            preview.replace('LOSE','❌')
             send_message_to_channel(f'''PRÉVIA DO RESULTADO
-
 {preview}
 ''')
         
@@ -258,7 +258,7 @@ class SignalsSender:
             s.cancel()
 
     # Adicionados em manutenção
-    def activate_operation_after(self,seconds: int = 1500):
+    def activate_operation_after(self,seconds: int = 720):
         time.sleep(seconds)
         self.__is_operating = False
 

@@ -14,6 +14,9 @@ def run_process():
 
     signal_sender = SignalsSender("signals.txt")
     signal_sender.start()
+# run_process ()
+
+# se der merda descomenta o de cima ai kkkk
 
 # Abre o arquivo JSON no modo de leitura (substitua 'example.json' pelo caminho para o seu arquivo JSON)
 with open('data.json', 'r') as file:
@@ -36,9 +39,18 @@ for session in data["sessions"]:
     final_hours, final_minutes = map(int, session["end"].split(":"))
     decimal_final_hours = final_hours + (final_minutes / 60)
 
-    # Se estiver dentro do horario inicia da mesma forma
-    if now_decimal_hour > decimal_initial_hours and now_decimal_hour < decimal_final_hours:
-        run_process()
+# Lógica para lidar com a sessão que cruza a meia-noite
+    if decimal_final_hours < decimal_initial_hours:
+        if now_decimal_hour > decimal_initial_hours or now_decimal_hour < decimal_final_hours:
+            run_process()
+    else:
+        if decimal_initial_hours < now_decimal_hour < decimal_final_hours:
+            run_process()
+
+#  se der merda e culpa do cara de cima ai 
+    # # Se estiver dentro do horario inicia da mesma forma
+    # if now_decimal_hour > decimal_initial_hours and now_decimal_hour < decimal_final_hours:
+    #     run_process()
 
     # Executa o código no início de cada sessão
     schedule.every().day.at(session["start"]).do(run_process)

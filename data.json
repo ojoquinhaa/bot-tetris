@@ -1,31 +1,31 @@
 {
-  "sessions": [
-    {
-      "start": "23:30",
-      "end": "03:00",
-      "win": 0,
-      "loss": 0,
-      "max_win": 6,
-      "max_loss": 2,
-      "ops": []
-    },
-    {
-      "start": "07:30",
-      "end": "12:00",
-      "win": 0,
-      "loss": 0,
-      "max_win": 6,
-      "max_loss": 2,
-      "ops": []
-    },
-    {
-      "start": "19:24",
-      "end": "20:00",
-      "win": 0,
-      "loss": 0,
-      "max_win": 2,
-      "max_loss": 2,
-      "ops": []
-    }
-  ]
+    "sessions": [
+        {
+            "start": "00:00",
+            "end": "03:00",
+            "win": 3,
+            "loss": 0,
+            "max_win": 7,
+            "max_loss": 2,
+            "ops": []
+        },
+        {
+            "start": "08:00",
+            "end": "12:00",
+            "win": 0,
+            "loss": 0,
+            "max_win": 7,
+            "max_loss": 2,
+            "ops": []
+        },
+        {
+            "start": "15:00",
+            "end": "20:00",
+            "win": 0,
+            "loss": 0,
+            "max_win": 3,
+            "max_loss": 2,
+            "ops": []
+        }
+    ]
 }
